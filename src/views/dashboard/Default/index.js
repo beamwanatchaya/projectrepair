@@ -24,18 +24,18 @@ const Dashboard = () => {
         setLoading(false);
         setIduser(JSON.parse(localStorage.getItem("userData")).user_id)
         if (JSON.parse(localStorage.getItem("userData")).user_id === undefined) {
-            window.location.href = "http://tomart.online:3000/"
+            window.location.href = "https://tomart.online/"
         } else {
             console.log("NO")
             if (JSON.parse(localStorage.getItem("userData")).role === "user") {
-                axios.get(`http://128.199.139.142:8080/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
+                axios.get(`https://server.tomart.online/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
                     console.log(res.data)
                     // setdata(res.data)
                     setHistoryData(res.data)
 
                 })
             } else {
-                axios.get(`http://128.199.139.142:8080/api/repairForm/getform`).then(res => {
+                axios.get(`https://server.tomart.online/api/repairForm/getform`).then(res => {
                     console.log(res.data)
                     // setdata(res.data)
                     setHistoryData(res.data)

@@ -30,12 +30,12 @@ export default function SignIn() {
             password: data.get('password')
         }
 
-        axios.post('http://128.199.139.142:8080/api/repair/login', datas).then(res => {
+        axios.post('https://server.tomart.online/api/repair/login', datas).then(res => {
             console.log("project", res.data)
             if (res.data !== 'incorrect') {
                 console.log("loginsucceed")
                 localStorage.setItem('userData', JSON.stringify(res.data))
-                window.location.href = 'http://tomart.online:3000/dashboard'
+                window.location.href = 'https://tomart.online/dashboard'
             }
             else {
                 console.log('รหัสผ่านไม่ถูกต้อง')

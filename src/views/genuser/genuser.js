@@ -107,20 +107,20 @@ const PopularCard = ({ isLoading }) => {
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("userData")).role === "admin") {
-            // axios.get(`http://128.199.139.142:8080/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
+            // axios.get(`https://server.tomart.online/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
             //     console.log(res.data)
             //     // setdata(res.data)
             //     setdata(res.data)
 
             // })
-            axios.get(`http://128.199.139.142:8080/api/repair/getuser`).then(res => {
+            axios.get(`https://server.tomart.online/api/repair/getuser`).then(res => {
                 // console.log(res.data)
                 // setdata(res.data)
                 setdata(res.data)
 
             })
         } else {
-            axios.get(`http://128.199.139.142:8080/api/repair/getuser`).then(res => {
+            axios.get(`https://server.tomart.online/api/repair/getuser`).then(res => {
                 // console.log(res.data)
                 // setdata(res.data)
                 setdata(res.data)
@@ -156,7 +156,7 @@ const PopularCard = ({ isLoading }) => {
             id: `${id}`,
             status: event
         }
-        axios.post("http://128.199.139.142:8080/api/repairForm/updatestatus", data).then(res => {
+        axios.post("https://server.tomart.online/api/repairForm/updatestatus", data).then(res => {
             console.log(res)
         })
 
@@ -183,9 +183,9 @@ const PopularCard = ({ isLoading }) => {
 
         }
 
-        axios.post("http://128.199.139.142:8080/api/repair/genusername", data).then(res => {
+        axios.post("https://server.tomart.online/api/repair/genusername", data).then(res => {
             console.log(res)
-            axios.get(`http://128.199.139.142:8080/api/repair/getuser`).then(res => {
+            axios.get(`https://server.tomart.online/api/repair/getuser`).then(res => {
                 // console.log(res.data)
                 // setdata(res.data)
                 setdata(res.data)
@@ -198,7 +198,7 @@ const PopularCard = ({ isLoading }) => {
     }
     const deleted = (id) => {
         console.log("id:", id)
-        axios.get(`http://128.199.139.142:8080/api/repair/deleteuser/${id}`).then(res => {
+        axios.get(`https://server.tomart.online/api/repair/deleteuser/${id}`).then(res => {
             console.log(res)
             const newdata = data.filter((datas) => datas.id !== id);
             setOpendelete({isopen:false,id:0})

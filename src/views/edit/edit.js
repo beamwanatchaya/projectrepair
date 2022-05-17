@@ -71,7 +71,7 @@ export default function EditForm(props) {
             status: data.get('Status'),
             date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
         });
-        axios.post('http://128.199.139.142:8080/api/repairForm/editform', datas).then(res => {
+        axios.post('https://server.tomart.online/api/repairForm/editform', datas).then(res => {
             console.log(res.data)
             if (res.data.messege === "succed") {
                 console.log("sendsucced")
