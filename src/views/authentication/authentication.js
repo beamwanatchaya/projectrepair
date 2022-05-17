@@ -14,12 +14,17 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import Cookies from 'js-cookie'
-
+import useEffect from 'react';
 import loginBG from '../../assets/images/auth/loginBG.png'
 
 const theme = createTheme();
 
 export default function SignIn() {
+    useEffect(() => {
+        if (localStorage.getItem("userData") !== null) {
+            navigate('/dashboard')
+        } 
+    }, [])
 
     const handleSubmit = (event) => {
         event.preventDefault();
