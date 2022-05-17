@@ -16,14 +16,13 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 import useEffect from 'react';
 import loginBG from '../../assets/images/auth/loginBG.png'
-import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
 export default function SignIn() {
     useEffect(() => {
         if (localStorage.getItem("userData") !== null) {
-            navigate('/dashboard')
+            window.location.href = 'https://tomart.online/dashboard'
         } 
     }, [])
 
