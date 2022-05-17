@@ -28,14 +28,14 @@ const Dashboard = () => {
         } else {
             console.log("NO")
             if (JSON.parse(localStorage.getItem("userData")).role === "user") {
-                axios.get(`http://localhost:8080/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
+                axios.get(`http://128.199.139.142:8080/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
                     console.log(res.data)
                     // setdata(res.data)
                     setHistoryData(res.data)
 
                 })
             } else {
-                axios.get(`http://localhost:8080/api/repairForm/getform`).then(res => {
+                axios.get(`http://128.199.139.142:8080/api/repairForm/getform`).then(res => {
                     console.log(res.data)
                     // setdata(res.data)
                     setHistoryData(res.data)

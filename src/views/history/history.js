@@ -97,14 +97,14 @@ const PopularCard = ({ isLoading }) => {
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("userData")).role === "user") {
-            axios.get(`http://localhost:8080/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
+            axios.get(`http://128.199.139.142:8080/api/repairForm/getform/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(res => {
                 console.log(res.data)
                 // setdata(res.data)
                 setdata(res.data)
 
             })
         } else {
-            axios.get(`http://localhost:8080/api/repairForm/getform`).then(res => {
+            axios.get(`http://128.199.139.142:8080/api/repairForm/getform`).then(res => {
                 console.log(res.data)
                 // setdata(res.data)
                 setdata(res.data)
@@ -132,7 +132,7 @@ const PopularCard = ({ isLoading }) => {
             id: `${id}`,
             status: event
         }
-        axios.post("http://localhost:8080/api/repairForm/updatestatus", data).then(res => {
+        axios.post("http://128.199.139.142:8080/api/repairForm/updatestatus", data).then(res => {
             console.log(res)
         })
 

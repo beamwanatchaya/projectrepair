@@ -30,7 +30,7 @@ export default function SignIn() {
             password: data.get('password')
         }
 
-        axios.post('http://localhost:8080/api/repair/login', datas).then(res => {
+        axios.post('http://128.199.139.142:8080/api/repair/login', datas).then(res => {
             console.log("project", res.data)
             if (res.data !== 'incorrect') {
                 console.log("loginsucceed")

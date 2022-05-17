@@ -51,7 +51,7 @@ const UtilitiesShadow = ({isLoading}) => {
     useEffect(() => {
      
       if (JSON.parse(localStorage.getItem("userData")).role === "user") {
-        axios.get(`http://localhost:8080/api/repairForm/series/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(async(res) => {
+        axios.get(`http://128.199.139.142:8080/api/repairForm/series/${JSON.parse(localStorage.getItem("userData")).user_id}`).then(async(res) => {
             console.log("ress", res.data) 
             const resultdata = {all:0,pending:0,success:0}
             await res.data.forEach(element => {
@@ -87,7 +87,7 @@ const UtilitiesShadow = ({isLoading}) => {
         })
       
     } else {
-        axios.get("http://localhost:8080/api/repairForm/series").then(async(res) => {
+        axios.get("http://128.199.139.142:8080/api/repairForm/series").then(async(res) => {
             const resultdata = {all:0,pending:0,success:0}
             await res.data.forEach(element => {
                 resultdata.all+=element.count
