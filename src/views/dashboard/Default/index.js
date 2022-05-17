@@ -24,7 +24,7 @@ const Dashboard = () => {
         setLoading(false);
         setIduser(JSON.parse(localStorage.getItem("userData")).user_id)
         if (JSON.parse(localStorage.getItem("userData")).user_id === undefined) {
-            window.location.href = "http://128.199.139.142:3000/"
+            window.location.href = "http://tomart.online:3000/"
         } else {
             console.log("NO")
             if (JSON.parse(localStorage.getItem("userData")).role === "user") {

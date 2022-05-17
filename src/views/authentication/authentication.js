@@ -35,7 +35,7 @@ export default function SignIn() {
             if (res.data !== 'incorrect') {
                 console.log("loginsucceed")
                 localStorage.setItem('userData', JSON.stringify(res.data))
-                window.location.href = 'http://128.199.139.142:3000/dashboard'
+                window.location.href = 'http://tomart.online:3000/dashboard'
             }
             else {
                 console.log('รหัสผ่านไม่ถูกต้อง')
