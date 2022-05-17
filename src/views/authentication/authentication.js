@@ -53,7 +53,7 @@ export default function SignIn() {
 
 
         // <ThemeProvider theme={theme}>
-        localStorage.getItem("userData") !== null ?
+        localStorage.getItem("userData") === null ?
             <div style={{
                 backgroundImage: `url(${loginBG})`,
                 height : '100vh',
