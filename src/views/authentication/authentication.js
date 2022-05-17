@@ -53,7 +53,7 @@ export default function SignIn() {
 
 
         // <ThemeProvider theme={theme}>
-
+        localStorage.getItem("userData") !== null ?
             <div style={{
                 backgroundImage: `url(${loginBG})`,
                 height : '100vh',
@@ -99,7 +99,7 @@ export default function SignIn() {
                     </Box>
                     {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
                 </Container>
-            </div>
+            </div> : null
         // </ThemeProvider>
 
     );
