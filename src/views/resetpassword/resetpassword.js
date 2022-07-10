@@ -99,10 +99,11 @@ export default function Typography() {
             >
                 <div>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: '100%' }}>
+                    {error.status?(<p>{error.message}</p>):null}
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
 
-                            {error.status?(<p>{error.message}</p>):null}
+                            
                             <Grid item xs={6}>
                                 <Item><TextField
                                     required
