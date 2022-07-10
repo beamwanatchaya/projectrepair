@@ -85,13 +85,15 @@ const PopularCard = ({ isLoading }) => {
     const [room, setroom] = useState();
     const [phone, setphone] = useState();
     const [role, setrole] = useState();
-    const [edit,setedit]  = useState(false);
-    const [editdata,seteditdata] = useState({});
-     const handleClick = (event) => {
+    const [edit, setedit] = useState(false);
+    const [iduser, setIduser] = useState();
+    const [editdata, seteditdata] = useState({});
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
 
     };
     const openedit = (data) => {
+        setIduser(data.id)
         setusername(data.username)
         setpassword(data.password)
         setname(data.name)
@@ -100,7 +102,7 @@ const PopularCard = ({ isLoading }) => {
         setphone(data.phone)
         setrole(data.role)
         setedit(true)
-        
+
     }
     const [opendelete, setOpendelete] = useState({
         isopen: false,
@@ -215,12 +217,12 @@ const PopularCard = ({ isLoading }) => {
         axios.get(`https://server.tomart.online/api/repair/deleteuser/${id}`).then(res => {
             console.log(res)
             const newdata = data.filter((datas) => datas.id !== id);
-            setOpendelete({isopen:false,id:0})
+            setOpendelete({ isopen: false, id: 0 })
 
             setdata(newdata);
 
         })
-        
+
     }
     const edituesr = (e) => {
         e.preventDefault()
@@ -232,12 +234,23 @@ const PopularCard = ({ isLoading }) => {
             'lname': lname,
             'room': room,
             'phone': phone,
-            'role': role
+            'role': role,
+            'id': iduser
 
-    } 
-    setedit(false)
-    console.log(data)
-}
+        }
+        axios.post("https://server.tomart.online/api/repair/edituser", data).then(res => {
+            console.log(res)
+            axios.get(`https://server.tomart.online/api/repair/getuser`).then(res => {
+                // console.log(res.data)
+                // setdata(res.data)
+                setdata(res.data)
+
+            })
+            setedit(false);
+
+        })
+        console.log(data)
+    }
     const handledialog = (userid) => {
         setOpendelete({ isopen: true, id: userid });
     }
@@ -273,7 +286,7 @@ const PopularCard = ({ isLoading }) => {
                             <StyledTableCell align="left">role&nbsp;</StyledTableCell>
                             <StyledTableCell align="left">edit</StyledTableCell>
                             <StyledTableCell align="left">delete</StyledTableCell>
-                           
+
 
                         </TableRow>
                     </TableHead>
@@ -312,11 +325,11 @@ const PopularCard = ({ isLoading }) => {
                                     <StyledTableCell align="left">{row.username}</StyledTableCell>
                                     <StyledTableCell align="left">{row.password}</StyledTableCell>
                                     <StyledTableCell align="left">{row.role}</StyledTableCell>
-                                    <StyledTableCell align="left"> <EditIcon style={{color:'blue'}} onClick ={()=> openedit(row)} /></StyledTableCell>
+                                    <StyledTableCell align="left"> <EditIcon style={{ color: 'blue' }} onClick={() => openedit(row)} /></StyledTableCell>
                                     <StyledTableCell align="left">
-                                       
-                                            <DeleteIcon style={{cursor:"pointer"}} color='primary' onClick={() => handleClickOpendelete(row.id)} />
-                                     
+
+                                        <DeleteIcon style={{ cursor: "pointer" }} color='primary' onClick={() => handleClickOpendelete(row.id)} />
+
                                     </StyledTableCell>
 
                                 </StyledTableRow>
@@ -544,7 +557,7 @@ const PopularCard = ({ isLoading }) => {
                 <DialogTitle id="alert-dialog-title">
                     Delete
                 </DialogTitle>
-                
+
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         double check Will you delete this user?
@@ -557,7 +570,7 @@ const PopularCard = ({ isLoading }) => {
                     </Button>
                 </DialogActions>
             </Dialog>
-            
+
 
 
 
