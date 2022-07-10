@@ -79,14 +79,14 @@ export default function Typography() {
         //     date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
         // });
 
-        // axios.post('https://server.tomart.online/api/repairForm/form', datas).then(res => {
-        //     console.log(res.data)
-        //     if (res.data === "sendform succeed") {
-        //         console.log("sendsucceed")
-        //         window.location.href = '/history'
-        //     }
+        axios.post('http://server.tomart.online/api/changepass', datas).then(res => {
+            console.log(res.data)
+            if (res.status===200) {
+                console.log("sendsucceed")
+                // window.location.href = '/history'
+            }
 
-        // })
+        })
     };
 
     return (
@@ -110,7 +110,7 @@ export default function Typography() {
                                     name='oldPassword'
                                     id="oldPassword"
                                     label="รหัสผ่านเดิม"
-                                    defaultValue=" "
+                                   
                                     fullWidth
                                     type="password"
                                     style={{width : '70%'}}
@@ -123,7 +123,7 @@ export default function Typography() {
                                     name='newPassword'
                                     id="newPassword"
                                     label="รหัสผ่านใหม่"
-                                    defaultValue=" "
+                                    
                                     fullWidth
                                     type="password"
                                     style={{width : '70%'}}
@@ -136,7 +136,7 @@ export default function Typography() {
                                     name='confirmPassword'
                                     id="confirmPassword"
                                     label="ยืนยันรหัสผ่านใหม่"
-                                    defaultValue=" "
+                                    
                                     fullWidth
                                     type="password"
                                     style={{width : '70%'}}
