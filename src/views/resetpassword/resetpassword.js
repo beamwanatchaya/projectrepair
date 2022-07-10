@@ -62,7 +62,7 @@ export default function Typography() {
                 iduser: datainfo.user_id
                
             }
-            axios.post('http://server.tomart.online/api/changepass', datas).then(res => {
+            axios.post('https://server.tomart.online/api/repair/changepass', datas).then(res => {
                 console.log(res.data)
                 if (res.status===200) {
                     console.log("sendsucceed")
