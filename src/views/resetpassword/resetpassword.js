@@ -73,6 +73,9 @@ export default function Typography() {
                     setOpen(true)
                     // window.location.href = '/history'
                 }
+                else{
+                    setError({status:true,message:"Failed to chang password"})
+                }
     
             })
             console.log(datas)
@@ -168,16 +171,15 @@ export default function Typography() {
          aria-describedby="alert-dialog-description"
        >
          <DialogTitle id="alert-dialog-title">
-          ddd
+         examine!
          </DialogTitle>
          <DialogContent>
            <DialogContentText id="alert-dialog-description">
-             Let Google help apps determine location. This means sending anonymous
-             location data to Google, even when no apps are running.
+           you password has been change successfully
            </DialogContentText>
          </DialogContent>
          <DialogActions>
-           <Button onClick={handleClose}>Disagree</Button>
+          
            <Button onClick={handleClose} autoFocus>
              Agree
            </Button>
