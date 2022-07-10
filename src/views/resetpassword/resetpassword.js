@@ -56,13 +56,14 @@ export default function Typography() {
     const handleSubmit = (event) => {
         console.log("event.currentTarget ===>", event.currentTarget)
         event.preventDefault();
+        const data = new FormData(event.currentTarget);
       
 
         // console.log("userid ==>", userid.user_id)
         const datas = {
-            OldPassword: datainfo.OldPassword,
-            NewPassword: datainfo.NewPassword,
-            ConfirmPassword: datainfo.ConfirmPassword,
+            oldPassword: data.get('oldPassword'),
+            newPassword: data.get('newPassword'),
+            confirmPassword: data.get('confirmPassword'),
             iduser: datainfo.user_id,
            
         }
@@ -105,8 +106,8 @@ export default function Typography() {
                             <Grid item xs={6}>
                                 <Item><TextField
                                     required
-                                    name='OldPassword'
-                                    id="OldPassword"
+                                    name='oldPassword'
+                                    id="oldPassword"
                                     label="รหัสผ่านเดิม"
                                     defaultValue=" "
                                     fullWidth
@@ -117,8 +118,8 @@ export default function Typography() {
                             <Grid item xs={6}>
                                 <Item><TextField
                                     required
-                                    name='NewPassword'
-                                    id="NewPassword"
+                                    name='newPassword'
+                                    id="newPassword"
                                     label="รหัสผ่านใหม่"
                                     defaultValue=" "
                                     fullWidth
@@ -129,8 +130,8 @@ export default function Typography() {
                             <Grid item xs={6}>
                                 <Item><TextField
                                     required
-                                    name='ConfirmPassword'
-                                    id="ConfirmPassword"
+                                    name='confirmPassword'
+                                    id="confirmPassword"
                                     label="ยืนยันรหัสผ่านใหม่"
                                     defaultValue=" "
                                     fullWidth
