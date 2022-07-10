@@ -51,9 +51,9 @@ export default function Typography() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
       
-
+        console.log(data.get('newPassword'))
         // console.log("userid ==>", userid.user_id)
-        if (data.get('newPassword')===data.get('confirmpassword')){
+        if (data.get('newPassword')===data.get('confirmPassword')){
             setError({status:false,message:''})
             const datas = {
                 oldPassword: data.get('oldPassword'),
