@@ -56,44 +56,41 @@ export default function Typography() {
     const handleSubmit = (event) => {
         console.log("event.currentTarget ===>", event.currentTarget)
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        // const userid = JSON.parse(localStorage.getItem('userData'))
+      
 
         // console.log("userid ==>", userid.user_id)
         const datas = {
-            name: datainfo.name,
-            surname: datainfo.lname,
-            phone: datainfo.phone,
-            room: datainfo.room,
-            details: data.get('Details'),
+            OldPassword: datainfo.OldPassword,
+            NewPassword: datainfo.NewPassword,
+            ConfirmPassword: datainfo.ConfirmPassword,
             iduser: datainfo.user_id,
-            status: 'wait',
-            date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+           
         }
-        console.log({
-            name: data.get('Name'),
-            surname: data.get('SurName'),
-            phone: data.get('Phone'),
-            room: data.get('Room'),
-            details: data.get('Details'),
-            iduser: data.get('Iduser'),
-            status: data.get('Status'),
-            date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-        });
+        console.log(datas)
+        // console.log({
+        //     name: data.get('Name'),
+        //     surname: data.get('SurName'),
+        //     phone: data.get('Phone'),
+        //     room: data.get('Room'),
+        //     details: data.get('Details'),
+        //     iduser: data.get('Iduser'),
+        //     status: data.get('Status'),
+        //     date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        // });
 
-        axios.post('https://server.tomart.online/api/repairForm/form', datas).then(res => {
-            console.log(res.data)
-            if (res.data === "sendform succeed") {
-                console.log("sendsucceed")
-                window.location.href = '/history'
-            }
+        // axios.post('https://server.tomart.online/api/repairForm/form', datas).then(res => {
+        //     console.log(res.data)
+        //     if (res.data === "sendform succeed") {
+        //         console.log("sendsucceed")
+        //         window.location.href = '/history'
+        //     }
 
-        })
+        // })
     };
 
     return (
         
-        <MainCard title="Online Repair Notification Form" >
+        <MainCard title="Reset Password" >
             <Box
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -108,9 +105,33 @@ export default function Typography() {
                             <Grid item xs={6}>
                                 <Item><TextField
                                     required
-                                    name='Details'
-                                    id="Details"
-                                    label="Details"
+                                    name='OldPassword'
+                                    id="OldPassword"
+                                    label="รหัสผ่านเดิม"
+                                    defaultValue=" "
+                                    fullWidth
+                                    style={{width : '70%'}}
+                                /></Item>
+                            </Grid>
+                            
+                            <Grid item xs={6}>
+                                <Item><TextField
+                                    required
+                                    name='NewPassword'
+                                    id="NewPassword"
+                                    label="รหัสผ่านใหม่"
+                                    defaultValue=" "
+                                    fullWidth
+                                    style={{width : '70%'}}
+                                /></Item>
+                            </Grid>
+                            
+                            <Grid item xs={6}>
+                                <Item><TextField
+                                    required
+                                    name='ConfirmPassword'
+                                    id="ConfirmPassword"
+                                    label="ยืนยันรหัสผ่านใหม่"
                                     defaultValue=" "
                                     fullWidth
                                     style={{width : '70%'}}
@@ -119,24 +140,7 @@ export default function Typography() {
 
 
 
-                            <Grid item xs={6}>
-                                <Item>
-                                    <LocalizationProvider  dateAdapter={AdapterDateFns}>
-                                        <DateTimePicker
-                                            renderInput={(props) => <TextField  style={{width : '70%'}} {...props} />}
-                                            name='dateTime'
-                                            label="DateTime"
-                                            id='dateTime'
-                                            onChange={(newValue) => setDate(newValue)}
-                                            value={date}
-                                           
-                                            fullWidth
-                                            
-
-                                        />
-                                    </LocalizationProvider>
-                                </Item>
-                            </Grid>
+                            
                         </Grid>
                         <center> <Button type='submit' variant="contained">Save</Button></center>
                     </Box>
