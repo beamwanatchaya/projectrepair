@@ -99,7 +99,7 @@ export default function Typography() {
             >
                 <div>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: '100%' }}>
-                    {error.status?(<p>{error.message}</p>):null}
+                  
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
 
@@ -112,6 +112,7 @@ export default function Typography() {
                                     label="รหัสผ่านเดิม"
                                     defaultValue=" "
                                     fullWidth
+                                    type="password"
                                     style={{width : '70%'}}
                                 /></Item>
                             </Grid>
@@ -124,6 +125,7 @@ export default function Typography() {
                                     label="รหัสผ่านใหม่"
                                     defaultValue=" "
                                     fullWidth
+                                    type="password"
                                     style={{width : '70%'}}
                                 /></Item>
                             </Grid>
@@ -136,6 +138,7 @@ export default function Typography() {
                                     label="ยืนยันรหัสผ่านใหม่"
                                     defaultValue=" "
                                     fullWidth
+                                    type="password"
                                     style={{width : '70%'}}
                                 /></Item>
                             </Grid>
@@ -144,7 +147,8 @@ export default function Typography() {
 
                             
                         </Grid>
-                        <center> <Button type='submit' variant="contained">Save</Button></center>
+                        
+                        <center> {error.status?(<p>{error.message}</p>):null} <Button type='submit' variant="contained">Save</Button></center>
                     </Box>
                 </div>
             </Box>
