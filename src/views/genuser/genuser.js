@@ -84,10 +84,17 @@ const PopularCard = ({ isLoading }) => {
     const [room, setroom] = useState();
     const [phone, setphone] = useState();
     const [role, setrole] = useState();
-    const handleClick = (event) => {
+    const [edit,setedit]  = useState(false);
+    const [dataedit,setdataedit] = useState();
+     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
 
     };
+    const openedit = (data) => {
+        setdataedit (data)
+        setedit(true)
+        
+    }
     const [opendelete, setOpendelete] = useState({
         isopen: false,
         id: 0
@@ -208,7 +215,21 @@ const PopularCard = ({ isLoading }) => {
         })
         
     }
+    const edituesr = (e) => {
+        e.preventDefault()
+        console.log(name, lname, room, phone, username, password, role)
+        const data = {
+            'username': username,
+            'password': password,
+            'name': name,
+            'lname': lname,
+            'room': room,
+            'phone': phone,
+            'role': role
 
+    } 
+    console.log(data)
+}
     const handledialog = (userid) => {
         setOpendelete({ isopen: true, id: userid });
     }
@@ -283,9 +304,7 @@ const PopularCard = ({ isLoading }) => {
                                     <StyledTableCell align="left">{row.username}</StyledTableCell>
                                     <StyledTableCell align="left">{row.password}</StyledTableCell>
                                     <StyledTableCell align="left">{row.role}</StyledTableCell>
-                                    <StyledTableCell align="left"> <Link to="/edit"
-                                    state={{ editData: row }}
-                                ><EditIcon /></Link></StyledTableCell>
+                                    <StyledTableCell align="left"> <EditIcon onClick ={()=> openedit(row)} /></StyledTableCell>
                                     <StyledTableCell align="left">
                                        
                                             <DeleteIcon style={{cursor:"pointer"}} color='primary' onClick={() => handleClickOpendelete(row.id)} />
@@ -400,6 +419,107 @@ const PopularCard = ({ isLoading }) => {
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
                         <Button type='submit'>Add</Button>
+                    </DialogActions>
+                </form>
+            </Dialog>
+            <Dialog open={edit} onClose={() => setedit(!edit)}>
+                <form onSubmit={edituesr}>
+                    <DialogTitle style={{ fontSize: 20 }}>edituser</DialogTitle>
+                    <DialogContent>
+
+                        <TextField
+                            required
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="name"
+                            type="name"
+                            fullWidth
+                            defaultValue={editdata.name}
+                            variant="standard"
+                            onChange={(e) => setname(e.target.value)}
+                        />
+                        <TextField
+                            required
+                            autoFocus
+                            margin="dense"
+                            id="surname"
+                            label="surname"
+                            type="surname"
+                            fullWidth
+                            defaultValue={editdata.surname}
+                            variant="standard"
+                            onChange={(e) => setlname(e.target.value)}
+                        />
+                        <TextField
+                            required
+                            autoFocus
+                            margin="dense"
+                            id="Phone"
+                            label="Phone"
+                            type="Phone"
+                            fullWidth
+                            defaultValue={editdata.phone}
+                            variant="standard"
+                            onChange={(e) => setphone(e.target.value)}
+                        />
+                        <TextField
+                            required
+                            autoFocus
+                            margin="dense"
+                            id="Room"
+                            label="Room"
+                            type="Room"
+                            fullWidth
+                            defaultValue={editdata.Room}
+                            variant="standard"
+                            onChange={(e) => setroom(e.target.value)}
+                        />
+                        <TextField
+                            required
+                            autoFocus
+                            margin="dense"
+                            id="username"
+                            label="username"
+                            type="username"
+                            fullWidth
+                            defaultValue={editdata.username}
+                            variant="standard"
+                            onChange={(e) => setusername(e.target.value)}
+                        />
+                        <TextField
+                            required
+                            autoFocus
+                            margin="dense"
+                            id="password"
+                            label="password"
+                            type="password"
+                            fullWidth
+                            defaultValue={editdata.password}
+                            variant="standard"
+                            onChange={(e) => setpassword(e.target.value)}
+                        />
+
+                        <FormControl fullWidth style={{ marginTop: 10 }}>
+                            <InputLabel id="demo-simple-select-label">role</InputLabel>
+                            <Select required
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                type="role"
+                                defaultValue={editdata.role}
+                                onChange={(e) => setrole(e.target.value)}
+                            // onChange={(e) => updatestatus(row.id, e.target.value)}
+                            >
+                                <MenuItem value="admin">admin</MenuItem>
+                                <MenuItem value="user">User</MenuItem>
+
+                            </Select>
+                        </FormControl>
+
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => setedit(!edit)}>Cancel</Button>
+                        <Button type='submit'>edit</Button>
                     </DialogActions>
                 </form>
             </Dialog>
