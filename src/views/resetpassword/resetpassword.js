@@ -62,6 +62,14 @@ export default function Typography() {
                 iduser: datainfo.user_id
                
             }
+            axios.post('http://server.tomart.online/api/changepass', datas).then(res => {
+                console.log(res.data)
+                if (res.status===200) {
+                    console.log("sendsucceed")
+                    // window.location.href = '/history'
+                }
+    
+            })
             console.log(datas)
         }
         else {
@@ -79,14 +87,7 @@ export default function Typography() {
         //     date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
         // });
 
-        axios.post('http://server.tomart.online/api/changepass', datas).then(res => {
-            console.log(res.data)
-            if (res.status===200) {
-                console.log("sendsucceed")
-                // window.location.href = '/history'
-            }
-
-        })
+       
     };
 
     return (
