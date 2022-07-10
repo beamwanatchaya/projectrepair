@@ -9,6 +9,7 @@ const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const Genuser = Loadable(lazy(() => import('views/genuser')));
 const History = Loadable(lazy(() => import('views/history')));
+const Resetpassword = Loadable(lazy(() => import('views/resetpassword')));
 
 const MainRoutes = {
     path: '/',
@@ -44,7 +45,7 @@ const MainRoutes = {
         },
         {
             path: '/resetpassword',
-            element: <Genuser />,
+            element: <Resetpassword />,
         }
     ]
 };
