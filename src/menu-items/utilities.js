@@ -51,6 +51,17 @@ const utilities = {
             breadcrumbs: false,
             privateRouteUser : false,
             privateRouteAdmin : true
+        },
+
+        {
+            id: 'resetpassword',
+            title: 'resetpassword',
+            type: 'item',
+            url: '/resetpassword',
+            icon: icons.IconUser,
+            breadcrumbs: false,
+            privateRouteUser : true,
+            privateRouteAdmin : false
         }
       
     ]

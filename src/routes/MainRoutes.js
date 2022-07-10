@@ -41,6 +41,10 @@ const MainRoutes = {
         {
             path: '/genuser',
             element: <Genuser />,
+        },
+        {
+            path: '/resetpassword',
+            element: <Genuser />,
         }
     ]
 };

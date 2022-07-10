@@ -242,8 +242,10 @@ const PopularCard = ({ isLoading }) => {
                             <StyledTableCell align="left">username&nbsp;</StyledTableCell>
                             <StyledTableCell align="left">password&nbsp;</StyledTableCell>
                             <StyledTableCell align="left">role&nbsp;</StyledTableCell>
-                            {/* <StyledTableCell align="left">edit</StyledTableCell> */}
+                            <StyledTableCell align="left">edit</StyledTableCell>
                             <StyledTableCell align="left">delete</StyledTableCell>
+                           
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -281,9 +283,9 @@ const PopularCard = ({ isLoading }) => {
                                     <StyledTableCell align="left">{row.username}</StyledTableCell>
                                     <StyledTableCell align="left">{row.password}</StyledTableCell>
                                     <StyledTableCell align="left">{row.role}</StyledTableCell>
-                                    {/* <StyledTableCell align="left"> <Link to="/edit"
+                                    <StyledTableCell align="left"> <Link to="/edit"
                                     state={{ editData: row }}
-                                ><EditIcon /></Link></StyledTableCell> */}
+                                ><EditIcon /></Link></StyledTableCell>
                                     <StyledTableCell align="left">
                                        
                                             <DeleteIcon style={{cursor:"pointer"}} color='primary' onClick={() => handleClickOpendelete(row.id)} />
@@ -410,6 +412,7 @@ const PopularCard = ({ isLoading }) => {
                 <DialogTitle id="alert-dialog-title">
                     Delete
                 </DialogTitle>
+                
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         double check Will you delete this user?
