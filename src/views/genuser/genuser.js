@@ -41,6 +41,7 @@ import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutl
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import { Update } from '@mui/icons-material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { set } from 'date-fns';
 // ==============================|| DASHBOARD DEFAULT - POPULAR CARD ||============================== //
 
 
@@ -85,13 +86,19 @@ const PopularCard = ({ isLoading }) => {
     const [phone, setphone] = useState();
     const [role, setrole] = useState();
     const [edit,setedit]  = useState(false);
-    const [editdata,seteditdata] = useState();
+    const [editdata,seteditdata] = useState({});
      const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
 
     };
     const openedit = (data) => {
-        seteditdata (data)
+        setusername(data.username)
+        setpassword(data.password)
+        setname(data.name)
+        setlname(data.lname)
+        setroom(data.room)
+        setphone(data.phone)
+        setrole(data.role)
         setedit(true)
         
     }
@@ -228,6 +235,7 @@ const PopularCard = ({ isLoading }) => {
             'role': role
 
     } 
+    setedit(false)
     console.log(data)
 }
     const handledialog = (userid) => {
@@ -304,7 +312,7 @@ const PopularCard = ({ isLoading }) => {
                                     <StyledTableCell align="left">{row.username}</StyledTableCell>
                                     <StyledTableCell align="left">{row.password}</StyledTableCell>
                                     <StyledTableCell align="left">{row.role}</StyledTableCell>
-                                    <StyledTableCell align="left"> <EditIcon onClick ={()=> openedit(row)} /></StyledTableCell>
+                                    <StyledTableCell align="left"> <EditIcon style={{color:'blue'}} onClick ={()=> openedit(row)} /></StyledTableCell>
                                     <StyledTableCell align="left">
                                        
                                             <DeleteIcon style={{cursor:"pointer"}} color='primary' onClick={() => handleClickOpendelete(row.id)} />
@@ -422,6 +430,8 @@ const PopularCard = ({ isLoading }) => {
                     </DialogActions>
                 </form>
             </Dialog>
+
+
             <Dialog open={edit} onClose={() => setedit(!edit)}>
                 <form onSubmit={edituesr}>
                     <DialogTitle style={{ fontSize: 20 }}>edituser</DialogTitle>
@@ -435,7 +445,7 @@ const PopularCard = ({ isLoading }) => {
                             label="name"
                             type="name"
                             fullWidth
-                            defaultValue={editdata.name}
+                            defaultValue={name}
                             variant="standard"
                             onChange={(e) => setname(e.target.value)}
                         />
@@ -447,7 +457,7 @@ const PopularCard = ({ isLoading }) => {
                             label="surname"
                             type="surname"
                             fullWidth
-                            defaultValue={editdata.surname}
+                            defaultValue={lname}
                             variant="standard"
                             onChange={(e) => setlname(e.target.value)}
                         />
@@ -459,7 +469,7 @@ const PopularCard = ({ isLoading }) => {
                             label="Phone"
                             type="Phone"
                             fullWidth
-                            defaultValue={editdata.phone}
+                            defaultValue={phone}
                             variant="standard"
                             onChange={(e) => setphone(e.target.value)}
                         />
@@ -471,7 +481,7 @@ const PopularCard = ({ isLoading }) => {
                             label="Room"
                             type="Room"
                             fullWidth
-                            defaultValue={editdata.Room}
+                            defaultValue={room}
                             variant="standard"
                             onChange={(e) => setroom(e.target.value)}
                         />
@@ -483,7 +493,7 @@ const PopularCard = ({ isLoading }) => {
                             label="username"
                             type="username"
                             fullWidth
-                            defaultValue={editdata.username}
+                            defaultValue={username}
                             variant="standard"
                             onChange={(e) => setusername(e.target.value)}
                         />
@@ -495,7 +505,7 @@ const PopularCard = ({ isLoading }) => {
                             label="password"
                             type="password"
                             fullWidth
-                            defaultValue={editdata.password}
+                            defaultValue={password}
                             variant="standard"
                             onChange={(e) => setpassword(e.target.value)}
                         />
@@ -506,7 +516,7 @@ const PopularCard = ({ isLoading }) => {
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 type="role"
-                                defaultValue={editdata.role}
+                                defaultValue={role}
                                 onChange={(e) => setrole(e.target.value)}
                             // onChange={(e) => updatestatus(row.id, e.target.value)}
                             >
@@ -523,6 +533,8 @@ const PopularCard = ({ isLoading }) => {
                     </DialogActions>
                 </form>
             </Dialog>
+
+
             <Dialog
                 open={opendelete.isopen}
                 onClose={handleClosedelete}
