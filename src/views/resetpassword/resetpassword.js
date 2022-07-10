@@ -6,7 +6,11 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SaveIcon from '@mui/icons-material/Save';
-
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
 import MainCard from 'ui-component/cards/MainCard';
@@ -35,7 +39,7 @@ export default function Typography() {
     const [datainfo, setDatainfo] = useState();
     const [error,setError] = useState({status:false,message:''});
     const [date, setDate] = useState(new Date());
-
+    const [open, setOpen] = React.useState(false);
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("userData")).role !== "user") {
             navigate('/dashboard')
@@ -59,7 +63,7 @@ export default function Typography() {
                 oldPassword: data.get('oldPassword'),
                 newPassword: data.get('newPassword'),
                 confirmPassword: data.get('confirmPassword'),
-                iduser: datainfo.user_id
+                id: datainfo.user_id
                
             }
             axios.post('https://server.tomart.online/api/repair/changepass', datas).then(res => {
