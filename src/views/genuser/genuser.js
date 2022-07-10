@@ -85,13 +85,13 @@ const PopularCard = ({ isLoading }) => {
     const [phone, setphone] = useState();
     const [role, setrole] = useState();
     const [edit,setedit]  = useState(false);
-    const [dataedit,setdataedit] = useState();
+    const [editdata,seteditdata] = useState();
      const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
 
     };
     const openedit = (data) => {
-        setdataedit (data)
+        seteditdata (data)
         setedit(true)
         
     }
