@@ -65,7 +65,7 @@ export default function Typography() {
             console.log(datas)
         }
         else {
-           setError({status:false,message:'Passwords do not match'})
+           setError({status:true,message:'Passwords do not match'})
         } 
         
       
