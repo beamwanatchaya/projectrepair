@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
-import { getDayOfYear } from 'date-fns';
+import { getDayOfYear, set } from 'date-fns';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,15 +32,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Typography() {
     const navigate = useNavigate()
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
-    const [phone, setPhone] = useState("");
-    const [room, setRoom] = useState("");
-    const [details, setDetails] = useState("");
-    const [iduser, setIduser] = useState("");
-    const [status, setStatus] = useState("");
     const [datainfo, setDatainfo] = useState();
-
+    const [error,setError] = useState({status:false,message:''});
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
@@ -52,7 +45,7 @@ export default function Typography() {
     }, [])
 
 
-
+    
     const handleSubmit = (event) => {
         console.log("event.currentTarget ===>", event.currentTarget)
         event.preventDefault();
@@ -60,15 +53,22 @@ export default function Typography() {
       
 
         // console.log("userid ==>", userid.user_id)
-        const datas = {
-            oldPassword: data.get('oldPassword'),
-            newPassword: data.get('newPassword'),
-            confirmPassword: data.get('confirmPassword'),
-            iduser: datainfo.user_id,
-           
+        if (data.get('newPassword')===data.get('confirmpassword')){
+            setError({status:false,message:''})
+            const datas = {
+                oldPassword: data.get('oldPassword'),
+                newPassword: data.get('newPassword'),
+                confirmPassword: data.get('confirmPassword'),
+                iduser: datainfo.user_id
+               
+            }
+            console.log(datas)
         }
-        console.log(datas)
-        // console.log({
+        else {
+           setError({status:false,message:'Passwords do not match'})
+        } 
+        
+      
         //     name: data.get('Name'),
         //     surname: data.get('SurName'),
         //     phone: data.get('Phone'),
@@ -102,7 +102,7 @@ export default function Typography() {
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
 
-
+                            {error.status?(<p>{error.message}</p>):null}
                             <Grid item xs={6}>
                                 <Item><TextField
                                     required
